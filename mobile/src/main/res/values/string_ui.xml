@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="search_again"><u>Tekrar Arama Yap</u></string>
+
+    <string name="an_error_occurred">Hata Oluştu!</string>
+    <string name="no_connection">Bağlantı yok</string>
+</resources>

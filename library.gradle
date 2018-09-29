@@ -1,0 +1,136 @@
+apply plugin: 'com.github.ben-manes.versions'
+
+ext {
+    versions = [
+            compileSdkVersion: 28,
+            targetSdkVersion : 28,
+            minSdkVersion    : 19,
+            versionCode      : 1,
+            versionName      : "1.0"
+    ]
+
+    libsVersion = [
+            kotlinVersion               : "1.2.70",
+            ktxVersion                  : "1.0.0-rc02",
+            supportLibVersion           : '1.0.0-rc02',
+            psLocationVersion           : '15.0.1',
+            multidexVersion             : '2.0.0',
+            archVersion                 : '2.0.0-rc01',
+            archPagingVersion           : '1.0.0',
+            constraintLayoutVersion     : '1.1.3',
+            daggerVersion               : '2.16',
+            rxJavaVersion               : '2.2.2',
+            rxAndroidVersion            : '2.1.0',
+            retrofitVersion             : '2.4.0',
+            glideVersion                : '4.8.0',
+            leakCanaryVersion           : '1.5.4',
+            parcelerVersion             : '1.1.11',
+            hawkVersion                 : '2.0.1',
+            rxpermissionsVersion        : '0.9.5',
+            gsonVersion                 : '2.8.5',
+            okhttpVersion               : '3.11.0',
+            timberVersion               : '4.7.1',
+            rxLocationVersion           : '1.0.5',
+
+            eventbusVersion             : '3.1.1',
+            calligraphyVersion          : '2.3.0',
+
+            junitVersion                : '4.12',
+            supportTestVersion          : '1.1.0-alpha3',
+            espressoVersion             : '3.1.0-alpha3',
+            topSnackBarVersion          : '1.1.1',
+            chuckVersion                : '1.1.0',
+
+    ]
+
+    libs = [
+
+
+            kotlin                  : "org.jetbrains.kotlin:kotlin-stdlib-jdk8:${libsVersion.kotlinVersion}",
+            kotlinCore              : "androidx.core:core-ktx:${libsVersion.ktxVersion}",
+            supportDesign           : "com.google.android.material:material:${libsVersion.supportLibVersion}",
+            supportCardview         : "androidx.cardview:cardview:${libsVersion.supportLibVersion}",
+            supportConstraintLayout : "androidx.constraintlayout:constraintlayout:${libsVersion.constraintLayoutVersion}",
+            supportMultidex         : "androidx.multidex:multidex:${libsVersion.multidexVersion}",
+
+            // Architecture Components
+            archExtensions          : "androidx.lifecycle:lifecycle-extensions:${libsVersion.archVersion}",
+            archLiveData            : "androidx.lifecycle:lifecycle-livedata:${libsVersion.archVersion}",
+            archViewModel           : "androidx.lifecycle:lifecycle-viewmodel:${libsVersion.archVersion}",
+
+            //Dagger
+            dagger                  : "com.google.dagger:dagger:${libsVersion.daggerVersion}",
+            daggerAndroid           : "com.google.dagger:dagger-android:${libsVersion.daggerVersion}",
+            daggerSupport           : "com.google.dagger:dagger-android-support:${libsVersion.daggerVersion}",
+            daggerProcessor         : "com.google.dagger:dagger-android-processor:${libsVersion.daggerVersion}",
+            daggerCompiler          : "com.google.dagger:dagger-compiler:${libsVersion.daggerVersion}",
+
+            //rx
+            rxjava                  : "io.reactivex.rxjava2:rxjava:${libsVersion.rxJavaVersion}",
+            rxjavaAndroid           : "io.reactivex.rxjava2:rxandroid:${libsVersion.rxAndroidVersion}",
+
+            //okhttp
+            okhttp                  : "com.squareup.okhttp3:okhttp:${libsVersion.okhttpVersion}",
+            okhttpLoggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${libsVersion.okhttpVersion}",
+
+            //retrofit
+            retrofit                : "com.squareup.retrofit2:retrofit:${libsVersion.retrofitVersion}",
+            retrofitConverterGson   : "com.squareup.retrofit2:converter-gson:${libsVersion.retrofitVersion}",
+            retrofitAdapterRxJava   : "com.squareup.retrofit2:adapter-rxjava2:${libsVersion.retrofitVersion}",
+
+            //glide
+            glide                   : "com.github.bumptech.glide:glide:${libsVersion.glideVersion}",
+            glideOkhttpIntegration  : "com.github.bumptech.glide:okhttp3-integration:${libsVersion.glideVersion}",
+            glideCompiler           : "com.github.bumptech.glide:compiler:${libsVersion.glideVersion}",
+
+            //leakcanary
+            leakcanary              : "com.squareup.leakcanary:leakcanary-android:${libsVersion.leakCanaryVersion}",
+            leakcanaryNoOp          : "com.squareup.leakcanary:leakcanary-android-no-op:${libsVersion.leakCanaryVersion}",
+
+            parcelerApi             : "org.parceler:parceler-api:${libsVersion.parcelerVersion}",
+            parceler                : "org.parceler:parceler:${libsVersion.parcelerVersion}",
+
+
+            hawk                    : "com.orhanobut:hawk:${libsVersion.hawkVersion}",
+            rxpermissions           : "com.tbruyelle.rxpermissions2:rxpermissions:${libsVersion.rxpermissionsVersion}@aar",
+            gson                    : "com.google.code.gson:gson:${libsVersion.gsonVersion}",
+            timber                  : "com.jakewharton.timber:timber:${libsVersion.timberVersion}",
+
+            rxLocation              : "com.patloew.rxlocation:rxlocation:${libsVersion.rxLocationVersion}",
+
+            calligraphy             : "uk.co.chrisjenx:calligraphy:${libsVersion.calligraphyVersion}",
+            eventbus                : "org.greenrobot:eventbus:${libsVersion.eventbusVersion}",
+
+            junit                   : "junit:junit:${libsVersion.junitVersion}",
+            supportRunner           : "androidx.test:runner:${libsVersion.supportTestVersion}",
+            espressoCore            : "androidx.test.espresso:espresso-core:${libsVersion.espressoVersion}",
+            topSnackBar             : "com.androidadvance:topsnackbar:${libsVersion.topSnackBarVersion}",
+
+            chuck                   : "com.readystatesoftware.chuck:library:${libsVersion.chuckVersion}",
+            chuckNoOp               : "com.readystatesoftware.chuck:library-no-op:${libsVersion.chuckVersion}",
+
+
+    ]
+
+    signingConfigs = [
+            storeFile    : rootProject.file('bigibunKeyStore'),
+            storePassword: "bigibun12*?",
+            keyAlias     : "androidreleasekey",
+            keyPassword  : "bigibun12*?"
+    ]
+
+}
+// show dependency tree : gradlew mobile:dependencies
+// show only release versions : gradlew dependencyUpdates -D revision=release
+dependencyUpdates.resolutionStrategy = {
+    componentSelection { rules ->
+        rules.all { ComponentSelection selection ->
+            boolean rejected = ['alpha', 'beta', 'rc', 'cr', 'm'].any { qualifier ->
+                selection.candidate.version ==~ /(?i).*[.-]${qualifier}[.\d-]*/
+            }
+            if (rejected) {
+                selection.reject('Release candidate')
+            }
+        }
+    }
+}

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:id="@id/errorView"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/pale_grey"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/error_image"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_margin="10dp"
+        android:layout_weight="1"
+        app:srcCompat="@drawable/ic_error"/>
+
+    <TextView
+        android:id="@+id/error_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:gravity="center_horizontal"
+        android:text="Bağlantı Yok"
+        android:textColor="#202020"
+        android:textSize="28sp"
+        tools:text="Bir Hata Oluştu"/>
+
+    <TextView
+        android:id="@+id/error_description"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="30dp"
+        android:gravity="center_horizontal"
+        android:lineSpacingExtra="2dp"
+        android:text="İnternet bağlantın kopmuş olabilir. Tekrar denemek için aşağıdaki butona tıklayabilirsin."
+        android:textColor="#202020"
+        android:textSize="16sp"
+        tools:text="Servislerimizde beklenmedik bir hata oluşmuştur"/>
+
+    <TextView
+        android:id="@+id/error_retry_button"
+        android:layout_width="300dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="60dp"
+        android:background="@drawable/shape_button_purple_border"
+        android:gravity="center"
+        android:text="Tekrar Dene"
+        android:textColor="@color/violet"
+        android:textSize="17sp"/>
+
+</LinearLayout>

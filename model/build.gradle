@@ -1,0 +1,20 @@
+apply plugin: 'java-library'
+apply plugin: "kotlin"
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation libs.kotlin
+    implementation libs.parcelerApi
+    implementation libs.gson
+    
+    implementation libs.dagger
+    implementation libs.daggerAndroid
+    implementation libs.daggerSupport
+    kapt libs.daggerProcessor
+    kapt libs.daggerCompiler
+
+    kapt libs.parceler
+}
+
+sourceCompatibility = "1.8"
+targetCompatibility = "1.8"
