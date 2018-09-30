@@ -9,6 +9,7 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.request.RequestOptions
 import com.spacex.R
 import com.spacex.app.GlideApp
+import com.spacex.common.view.ContentView
 import timber.log.Timber
 
 
@@ -35,5 +36,12 @@ fun imageUri(imageView: ImageView, imageUri: Uri?, placeholder: Drawable?) {
                     .apply(RequestOptions().placeholder(placeholderDrawable))
                     .into(imageView)
         }
+    }
+}
+
+@BindingAdapter(value = ["displayType"], requireAll = false)
+fun displayType(view: ContentView, type: ContentView.Type?) {
+    if (type != null) {
+        view.setDisplay(type)
     }
 }

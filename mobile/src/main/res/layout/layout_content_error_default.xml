@@ -35,22 +35,13 @@
         android:layout_gravity="center_horizontal"
         android:layout_marginBottom="30dp"
         android:gravity="center_horizontal"
+        android:layout_weight="1"
         android:lineSpacingExtra="2dp"
         android:text="İnternet bağlantın kopmuş olabilir. Tekrar denemek için aşağıdaki butona tıklayabilirsin."
         android:textColor="#202020"
         android:textSize="16sp"
         tools:text="Servislerimizde beklenmedik bir hata oluşmuştur"/>
 
-    <TextView
-        android:id="@+id/error_retry_button"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="60dp"
-        android:background="@drawable/shape_button_purple_border"
-        android:gravity="center"
-        android:text="Tekrar Dene"
-        android:textColor="@color/violet"
-        android:textSize="17sp"/>
+
 
 </LinearLayout>

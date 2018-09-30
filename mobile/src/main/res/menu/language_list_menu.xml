@@ -1,4 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/bankRatesSortMenu">
+    <item
+        android:id="@+id/menu_search_option"
+        android:title="Sırala"
+        app:showAsAction="ifRoom">
+        <menu>
+
+            <item
+                android:id="@+id/btnDateNew"
+                android:title="@string/menu_sort_date_new_old"
+                android:titleCondensed="@string/menu_sort_date_new_old"
+                app:showAsAction="never" />
+
+            <item
+                android:id="@+id/btnDateOld"
+                android:title="@string/menu_sort_date_old_new"
+                android:titleCondensed="@string/menu_sort_date_old_new"
+                app:showAsAction="never" />
+
+        </menu>
+    </item>
+
 
 </menu>
+
+

@@ -9,11 +9,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.spacex.databinding.ItemLanguageBinding
 import com.spacex.model.Language
 import java.util.*
+import kotlin.collections.ArrayList
 
 private const val formatPattern = "d MMMM yyyy"
 
 class LanguageAdapter : ListAdapter<Language, LanguageViewHolder>(LanguageDiff) {
-
+    lateinit var list: List<Language>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LanguageViewHolder {
         val binding =
@@ -26,10 +27,22 @@ class LanguageAdapter : ListAdapter<Language, LanguageViewHolder>(LanguageDiff) 
         holder.binding.txtDate.text = DateFormat.format(formatPattern, getItem(position).launchDate)
     }
 
-    override fun submitList(list: List<Language>?) {
+    fun shortDateNew() {
         Collections.sort(list) { rate2, rate1 ->
             rate1.launchDate.compareTo(rate2.launchDate)
         }
+        notifyDataSetChanged()
+    }
+
+    fun shortDateOld() {
+        Collections.sort(list) { rate1, rate2 ->
+            rate1.launchDate.compareTo(rate2.launchDate)
+        }
+        notifyDataSetChanged()
+    }
+
+    override fun submitList(list: List<Language>?) {
+        this.list = list ?: ArrayList<Language>();
         super.submitList(list)
     }
 

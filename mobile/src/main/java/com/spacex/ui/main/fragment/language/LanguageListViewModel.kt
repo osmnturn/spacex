@@ -12,6 +12,7 @@ class LanguageListViewModel @Inject constructor(val useCase: LangugeListUseCase,
     val mutableLiveData: MutableLiveData<List<Language>> = MutableLiveData()
 
     fun getlanguageList() {
+        type = ContentView.Type.LOADING
         disposable.add(useCase.requestList().subscribe({
             type = ContentView.Type.CONTENT
             mutableLiveData.postValue(it)

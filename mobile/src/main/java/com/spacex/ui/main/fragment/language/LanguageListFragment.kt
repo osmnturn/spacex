@@ -1,7 +1,9 @@
 package com.spacex.ui.main.fragment.language
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.Menu
 import android.view.View
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
@@ -19,6 +21,10 @@ import com.spacex.shared.annotation.ContentLayout
 import com.spacex.util.clearDecorations
 import com.spacex.util.viewModelProvider
 import kotlinx.android.synthetic.main.main_language_list_fragment.view.*
+import android.view.MenuInflater
+import android.view.MenuItem
+import com.spacex.util.consume
+
 
 @ContentLayout(R.layout.main_language_list_fragment)
 class LanguageListFragment : BaseFragment<MainLanguageListFragmentBinding>() {
@@ -27,6 +33,11 @@ class LanguageListFragment : BaseFragment<MainLanguageListFragmentBinding>() {
 
     private lateinit var adapter: LanguageAdapter
 
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
 
     @RequiresApi(Build.VERSION_CODES.LOLLIPOP)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -54,6 +65,25 @@ class LanguageListFragment : BaseFragment<MainLanguageListFragmentBinding>() {
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
+        inflater.inflate(R.menu.language_list_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item!!.itemId) {
+            R.id.btnDateNew -> consume {
+                adapter.shortDateNew()
+            }
+            R.id.btnDateOld -> consume {
+                adapter.shortDateOld()
+            }
+
+
+        }
+        return super.onOptionsItemSelected(item)
+    }
 
     private fun initializeList(languageList: List<Language>) {
         adapter.submitList(languageList)
