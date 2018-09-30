@@ -3,7 +3,7 @@ package com.spacex.repository.remote.interceptor;
 
 import android.content.Context;
 
-import com.spacex.common.util.Utils;
+import com.spacex.util.NetworkUtil;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -26,7 +26,7 @@ public class OfflineCacheInterceptor implements Interceptor {
     public Response intercept(Chain chain) throws IOException {
         Request request = chain.request();
 
-        if (!Utils.network.isConnectingToInternet(context)) {
+        if (!NetworkUtil.getInstance().isConnectingToInternet(context)) {
             CacheControl cacheControl = new CacheControl.Builder()
                     .maxStale(7, TimeUnit.DAYS)
                     .build();

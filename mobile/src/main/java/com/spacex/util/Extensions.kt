@@ -15,6 +15,9 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.*
 import com.spacex.shared.BuildConfig
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.schedulers.Schedulers
 import timber.log.Timber
 /**
  * Implementation of lazy that is not thread safe. Useful when you know what thread you will be
@@ -179,4 +182,10 @@ fun exceptionInDebug(t: Throwable) {
     } else {
         Timber.e(t)
     }
+}
+
+fun <T> Observable<T>.applyIOSchedulers(): Observable<T> {
+    return subscribeOn(Schedulers.io())
+            .unsubscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
 }
