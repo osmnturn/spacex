@@ -20,11 +20,6 @@ android {
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-
-        buildConfigField("String", "CLIENT_ID", '"be7dbc28-b7d0-41f2-8a26-322e6aa81f10"')
-        buildConfigField("String", "CLIENT_SECRET", '"3309b1a3-d0d5-4494-8c74-4f4003c1e153"')
-        buildConfigField("String", "TOKEN_CLIENT_SECRET", '"528FBD5B-E721-46FE-B99D-A6B28564442C"')
-
         renderscriptTargetApi 27
         renderscriptSupportModeEnabled true
     }
@@ -64,14 +59,14 @@ android {
     productFlavors {
 
         dev {
-            buildConfigField("String", "BASE_URL", '"http://46.101.189.235/"')
+            buildConfigField("String", "BASE_URL", '"https://api.spacexdata.com/v3/"')
             resValue "string", "app_name", "[Dev] $appName"
             dimension environment
         }
 
 
         prod {
-            buildConfigField("String", "BASE_URL", '"http://46.101.189.235/"')
+            buildConfigField("String", "BASE_URL", '"https://api.spacexdata.com/v3/"')
             resValue "string", "app_name", "$appName"
             dimension environment
         }
@@ -105,52 +100,60 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(":shared")
+
+    //kotlin
+    implementation libs.kotlin
+    implementation libs.kotlinCore
+
+    //Support
     implementation libs.supportMultidex
     implementation libs.supportDesign
     implementation libs.supportCardview
     implementation libs.supportConstraintLayout
 
+    //Architecture
     implementation libs.archExtensions
     implementation libs.archLiveData
     implementation libs.archViewModel
 
-    //Firebase
-
-
-
+    //Dagger
     implementation libs.dagger
     implementation libs.daggerAndroid
     implementation libs.daggerSupport
     kapt libs.daggerProcessor
     kapt libs.daggerCompiler
 
+    //Reactivex
     implementation libs.rxjava
     implementation libs.rxjavaAndroid
 
-    implementation libs.okhttp
-    implementation libs.okhttpLoggingInterceptor
-
+    //jake wharton
     implementation libs.retrofit
     implementation libs.retrofitConverterGson
     implementation libs.retrofitAdapterRxJava
+    implementation libs.okhttp
+    implementation libs.okhttpLoggingInterceptor
 
+    //Http Log
+    debugImplementation libs.chuck
+    releaseImplementation libs.chuckNoOp
+
+    //Glide
     implementation libs.glide
     implementation libs.glideOkhttpIntegration
     kapt libs.glideCompiler
+    implementation libs.timber
 
+    //Parcel
     implementation libs.parcelerApi
     kapt libs.parceler
 
-    implementation libs.hawk
-    implementation libs.rxpermissions
+
     implementation libs.gson
-    implementation libs.timber
-    implementation libs.rxLocation
+    implementation libs.hawk
     implementation libs.calligraphy
     implementation libs.eventbus
     implementation libs.topSnackBar
-    debugImplementation libs.chuck
-    releaseImplementation libs.chuckNoOp
 
     //test
     testImplementation libs.junit

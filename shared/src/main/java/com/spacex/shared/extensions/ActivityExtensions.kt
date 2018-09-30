@@ -31,7 +31,7 @@ inline fun <reified T : Any> Context.launchActivity(
     startActivity(intent, options)
 }
 
-inline fun AppCompatActivity.replaceFragment(fragment: androidx.fragment.app.Fragment, @IdRes containerId: Int) {
+fun AppCompatActivity.replaceFragment(fragment: androidx.fragment.app.Fragment, @IdRes containerId: Int) {
     val fragmentTransaction = supportFragmentManager.beginTransaction()
     fragmentTransaction.replace(containerId, fragment, fragment.javaClass.simpleName)
     fragmentTransaction.commitAllowingStateLoss()

@@ -24,7 +24,7 @@ import javax.inject.Provider
 /**
  * ViewModelFactory which uses Dagger to create the instances.
  */
-class IOSchedViewModelFactory @Inject constructor(
+class SpaceSchedViewModelFactory @Inject constructor(
     private val creators: @JvmSuppressWildcards Map<Class<out ViewModel>, Provider<ViewModel>>
 ) : ViewModelProvider.Factory {
 

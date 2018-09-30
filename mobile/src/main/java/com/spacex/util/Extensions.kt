@@ -1,4 +1,4 @@
-package com.spacex.shared.extensions
+package com.spacex.util
 
 import android.content.Context
 import android.os.Bundle
@@ -8,6 +8,7 @@ import androidx.annotation.AttrRes
 import androidx.annotation.ColorInt
 import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
+import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
@@ -15,7 +16,6 @@ import androidx.fragment.app.FragmentTransaction
 import androidx.lifecycle.*
 import com.spacex.shared.BuildConfig
 import timber.log.Timber
-
 /**
  * Implementation of lazy that is not thread safe. Useful when you know what thread you will be
  * executing on and are not worried about synchronization.
@@ -30,6 +30,11 @@ inline fun consume(f: () -> Unit): Boolean {
     return true
 }
 
+
+inline fun <T : ViewDataBinding> T.executeAfter(block: T.() -> Unit) {
+    block()
+    executePendingBindings()
+}
 
 /**
  * Allows calls like

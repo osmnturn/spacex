@@ -34,19 +34,10 @@
         android:layout_marginTop="20dp"
         android:gravity="center_horizontal"
         android:lineSpacingExtra="1.5dp"
-        android:text="Ne yazık ki kriterlerine uygun ilan bulamadık.\nKriterlerini değiştirerek tekrar arama yapabilirsin."
+        android:text="Liste boş"
         android:textColor="#9BA0A5"
         android:textSize="14sp"/>
 
-    <TextView
-        android:id="@+id/empty_retry_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:paddingBottom="20dp"
-        android:paddingTop="20dp"
-        android:text="@string/search_again"
-        android:textColor="@color/violet"
-        android:textSize="14sp"/>
+
 
 </LinearLayout>

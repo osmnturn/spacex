@@ -14,20 +14,14 @@
  * limitations under the License.
  */
 
-package com.spacex.shared.di
+package com.spacex.util
 
-import androidx.lifecycle.ViewModelProvider
-import dagger.Binds
-import dagger.Module
+import androidx.recyclerview.widget.RecyclerView
 
-/**
- * Module used to define the connection between the framework's [ViewModelProvider.Factory] and
- * our own implementation: [SpaceSchedViewModelFactory].
- */
-@Module
-abstract class ViewModelModule {
-
-    @Binds
-    internal abstract fun bindViewModelFactory(factory: SpaceSchedViewModelFactory):
-        ViewModelProvider.Factory
+fun RecyclerView.clearDecorations() {
+    if (itemDecorationCount > 0) {
+        for (i in itemDecorationCount - 1 downTo 0) {
+            removeItemDecorationAt(i)
+        }
+    }
 }

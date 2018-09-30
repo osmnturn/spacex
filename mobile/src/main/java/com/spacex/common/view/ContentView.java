@@ -2,8 +2,6 @@ package com.spacex.common.view;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import androidx.annotation.LayoutRes;
-import androidx.appcompat.widget.AppCompatImageView;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -11,11 +9,13 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.ViewAnimator;
 
+import com.google.gson.Gson;
 import com.spacex.R;
 import com.spacex.common.util.Utils;
 import com.spacex.repository.remote.BaseResponse;
-import com.google.gson.Gson;
 
+import androidx.annotation.LayoutRes;
+import androidx.appcompat.widget.AppCompatImageView;
 import okhttp3.ResponseBody;
 import retrofit2.HttpException;
 import timber.log.Timber;
@@ -33,7 +33,6 @@ public class ContentView extends ViewAnimator {
     private AppCompatImageView emptyImage;
     private TextView emptyTitle;
     private TextView emptyText;
-    private TextView emptyRetryButton;
 
     private int emptyLayoutId = R.layout.layout_content_empty_default;
     private int errorLayoutId = R.layout.layout_content_error_default;
@@ -51,11 +50,6 @@ public class ContentView extends ViewAnimator {
         }
     }
 
-    public void setRetryEmptyOnClickListener(View.OnClickListener listener) {
-        if (emptyRetryButton != null) {
-            emptyRetryButton.setOnClickListener(listener);
-        }
-    }
 
     public enum Type {
         CONTENT, LOADING, ERROR, EMPTY
@@ -90,9 +84,8 @@ public class ContentView extends ViewAnimator {
         emptyImage = viewError.findViewById(R.id.empty_image);
         emptyTitle = viewError.findViewById(R.id.empty_title);
         emptyText = viewError.findViewById(R.id.empty_description);
-        emptyRetryButton = viewEmpty.findViewById(R.id.empty_retry_button);
 
-        if (errorImage == null || errorTitle == null || errorText == null || errorRetryButton == null || emptyRetryButton == null) {
+        if (errorImage == null || errorTitle == null || errorText == null || errorRetryButton == null) {
             throw new RuntimeException("required views not found!");
         }
 
@@ -204,7 +197,6 @@ public class ContentView extends ViewAnimator {
     public void setEmptyView(@LayoutRes int layoutId) {
         removeView(viewEmpty);
         viewEmpty = LayoutInflater.from(getContext()).inflate(layoutId, null);
-        emptyRetryButton = viewEmpty.findViewById(R.id.empty_retry_button);
         addView(viewEmpty);
     }
 
@@ -258,7 +250,4 @@ public class ContentView extends ViewAnimator {
         return emptyText;
     }
 
-    public TextView getEmptyRetryButton() {
-        return emptyRetryButton;
-    }
 }

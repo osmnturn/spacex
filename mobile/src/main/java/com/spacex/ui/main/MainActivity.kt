@@ -6,10 +6,10 @@ import android.os.Bundle
 import androidx.databinding.DataBindingUtil
 import com.spacex.R
 import com.spacex.common.base.BaseActivity
-import com.spacex.shared.extensions.replaceFragment
 import com.spacex.databinding.MainActivityBinding
-import com.spacex.shared.extensions.viewModelProvider
-import com.spacex.ui.main.fragment.profile.ProfileFragment
+import com.spacex.shared.extensions.replaceFragment
+import com.spacex.util.viewModelProvider
+import com.spacex.ui.main.fragment.language.LanguageListFragment
 import com.spacex.ui.main.viewmodel.MainViewModel
 
 class MainActivity : BaseActivity() {
@@ -24,9 +24,8 @@ class MainActivity : BaseActivity() {
         binding = DataBindingUtil.setContentView(this, R.layout.main_activity)
         binding.viewModel = viewModel
 
-
         if (savedInstanceState == null) {
-            replaceFragment(ProfileFragment.newInstance(), R.id.bigiContainer)
+            replaceFragment(LanguageListFragment.newInstance(), R.id.container)
         }
     }
 
